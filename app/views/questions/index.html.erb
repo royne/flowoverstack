@@ -10,14 +10,14 @@
 </div>
 
 <div class="container">
-  <div class="row justfy-content-center">
+  <div class="row justify-content-center">
     <div class="col-sm-10">
       <table class="table">
         <tbody>
           <% @questions.each do |question| %>
             <tr>
               <td>
-                <h5><%= link_to question.title.capitalize, root_path %></h5>
+                <h5><%= link_to question.title.capitalize, question %></h5>
                 <p><%= question.body %></p>
               </td>
             </tr>
