@@ -8,7 +8,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(questions_params)
+    @question =  current_user.questions.create(questions_params) 
+
     if @question.save
       redirect_to root_path, notice: "La pregunta se creo correctamente"
     else
