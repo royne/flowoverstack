@@ -12,3 +12,39 @@
     </div>
   </div>
 </div>
+<!-- respuestas -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <% unless @question.answers.empty? %>
+        <h3><%= @question.answers.size %> Respuesta(s)</h3>
+        <% @question.answers.each do |answer| %>
+          <div class="card">
+            <div class="card-body">
+              <%= answer.body %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- crear respuestas -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <% if signed_in? %>
+        <br><h5>Publicar respuesta</h5>
+        <%= form_for [@question, @question.answers.build] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, placeholder: "Ingrese una respuesta", class: "form-control"%>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Publicar", class: "btn btn-dark" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
