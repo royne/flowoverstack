@@ -18,7 +18,6 @@
             <tr>
               <td>
                 <h5><%= link_to question.title.capitalize, question %></h5>
-                <p><%= question.body %></p>
                 <p class="font-italic text-secondary">Publicado por <%= question.user.email %>, <%= time_ago_in_words(question.created_at) %> </p>
               </td>
             </tr>
