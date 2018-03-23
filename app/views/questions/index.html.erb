@@ -17,6 +17,14 @@
           <% @questions.each do |question| %>
             <tr>
               <td>
+                <p></p>
+                <p class="text-secondary">Votos</p>
+              </td>
+              <td class="text-center">
+                <p class="text-center"><%= question.answers.size %></p>
+                <p class="text-secondary ">Respuestas</p>
+              </td>
+              <td>
                 <h5><%= link_to question.title.capitalize, question %></h5>
                 <p class="font-italic text-secondary">Publicado por <%= question.user.email %>, <%= time_ago_in_words(question.created_at) %> </p>
               </td>
