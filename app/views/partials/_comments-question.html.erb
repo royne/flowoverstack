@@ -1,36 +1,43 @@
-<!-- comentaros de preguntas -->
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-6">
-      <% unless @question.comments.empty? %>
-        <h3>Comentarios</h3>
-        <% @question.comments.each do |comment| %>
-          <div class="card">
-            <div class="card-body">
-              <%= comment.text %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<!-- crear comentarios de preguntas -->
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-6">
-      <% if signed_in? %>
-        <br><h5>Publicar Comentario</h5>
-        <%= form_for [@question, @question.comments.build] do |f| %>
-          <div class="form-group">
-            <%= f.text_area :text, placeholder: "Ingrese una respuesta", class: "form-control"%>
-          </div>
+    <div class="col-sm-8">
+      <!-- comentaros de preguntas -->
 
-          <div class="form-group">
-            <%= f.submit "Publicar", class: "btn btn-dark" %>
+        <div class="row justify-content-end">
+          <div class="col-sm-10">
+            <% unless @question.comments.empty? %>
+              <h4>Comentarios</h4>
+              <% @question.comments.each do |comment| %>
+                <div class="card">
+                  <div class="card-body">
+                    <%= comment.text %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-        <% end %>
-      <% end %>
+        </div>
+
+      <!-- crear comentarios de preguntas -->
+
+        <div class="row justify-content-end">
+          <div class="col-sm-8">
+            <% if signed_in? %>
+              <br><h5>Publicar Comentario</h5>
+              <%= form_for [@question, @question.comments.build] do |f| %>
+                <div class="form-group">
+                  <%= f.text_area :text, placeholder: "Ingrese una respuesta", class: "form-control"%>
+                </div>
+
+                <div class="form-group">
+                  <%= f.submit "Publicar", class: "btn btn-dark btn-sm" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+
     </div>
   </div>
 </div>
