@@ -12,7 +12,11 @@
     </div>
   </div>
 </div>
-<!-- respuestas -->
+<!-- comentaros de preguntas -->
+
+<%= render 'partials/comments-question' %>
+
+<!-- RESPUESTAS -->
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
@@ -24,12 +28,45 @@
               <%= answer.body %>
             </div>
           </div>
+          <!-- comentarios de respuesta -->
+          <% unless answer.comments.empty? %>
+            <div class="row justify-content-end">
+              <div class="col-sm-10">
+                <h4>Comentarios</h4>
+                <% answer.comments.each do |comment| %>
+                  <div class="card">
+                    <div class="card-body">
+                      <%= comment.text %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <!-- crear comentarios de respuesta -->
+          <div class="row justify-content-end">
+            <div class="col-sm-8">
+              <% if signed_in? %>
+                <br><h5>Publicar Comentario</h5>
+                <%= form_for @comment, url: "/answers/#{answer.id}/commentanswer" do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :text, placeholder: "Ingrese un comentario", class: "form-control"%>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.submit "Publicar", class: "btn btn-dark btn-sm" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
-<!-- crear respuestas -->
+
+<!-- CREAR RESPUESTAS -->
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
@@ -41,7 +78,7 @@
           </div>
 
           <div class="form-group">
-            <%= f.submit "Publicar", class: "btn btn-dark" %>
+            <%= f.submit "Publicar", class: "btn btn-dark btn-sm" %>
           </div>
         <% end %>
       <% end %>
