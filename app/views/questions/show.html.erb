@@ -1,5 +1,16 @@
 <div class="container">
   <div class="row justify-content-center">
+    <% if @question.voted_by? current_user %>
+      <%= link_to question_vote_question_path(@question), method: :delete, class: "question-upvote upvote-active" do %>
+        <span class="upvote-arrow"></span>
+        <span class="upvote-count"><%= @question.vote_questions.count %></span>
+      <% end %>
+    <% else %>
+      <%= link_to question_vote_question_path(@question), method: :post, class: "question-upvote" do %>
+        <span class="upvote-arrow"></span>
+        <span class="upvote-count"><%= @question.vote_questions.count %></span>
+      <% end %>
+    <% end %>
     <div class="col-sm-8">
       <div class="card">
         <div class="card-header">

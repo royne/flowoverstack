@@ -16,8 +16,8 @@
         <tbody>
           <% @questions.each do |question| %>
             <tr>
-              <td>
-                <p></p>
+              <td class="text-center">
+                <p><%= question.vote_questions.size %></p>
                 <p class="text-secondary">Votos</p>
               </td>
               <td class="text-center">
