@@ -34,6 +34,17 @@
       <% unless @question.answers.empty? %>
         <h3><%= @question.answers.size %> Respuesta(s)</h3>
         <% @question.answers.each do |answer| %>
+          <% if answer.voted_answer_by? current_user %>
+            <%= link_to answer_vote_answer_path(answer), method: :delete, class: "question-upvote upvote-active" do %>
+              <span class="upvote-arrow"></span>
+              <span class="upvote-count"><%= answer.vote_answers.count %></span>
+            <% end %>
+          <% else %>
+            <%= link_to answer_vote_answer_path(answer), method: :post, class: "question-upvote" do %>
+              <span class="upvote-arrow"></span>
+              <span class="upvote-count"><%= answer.vote_answers.count %></span>
+            <% end %>
+          <% end %>
           <div class="card">
             <div class="card-body">
               <%= answer.body %>

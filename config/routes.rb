@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :answers, only: [:create] do
     post '/commentanswer', to: 'comments#create_answer'
+    resource :vote_answer, only: [:create, :destroy]
   end
 
   devise_for :users
