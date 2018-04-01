@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   resources :questions, only: [:index, :show, :new, :create] do
     resources :answers, only: [:create]
     resources :comments, only: [:create]
+    resource :vote_question, only: [:create, :destroy]
   end
 
   resources :answers, only: [:create] do
     post '/commentanswer', to: 'comments#create_answer'
+    resource :vote_answer, only: [:create, :destroy]
   end
 
   devise_for :users

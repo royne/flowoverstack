@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327141621) do
+ActiveRecord::Schema.define(version: 20180401041025) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
@@ -28,7 +28,9 @@ ActiveRecord::Schema.define(version: 20180327141621) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -55,6 +57,24 @@ ActiveRecord::Schema.define(version: 20180327141621) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vote_answers", force: :cascade do |t|
+    t.integer "answer_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_vote_answers_on_answer_id"
+    t.index ["user_id"], name: "index_vote_answers_on_user_id"
+  end
+
+  create_table "vote_questions", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_vote_questions_on_question_id"
+    t.index ["user_id"], name: "index_vote_questions_on_user_id"
   end
 
 end
