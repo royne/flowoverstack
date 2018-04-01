@@ -28,6 +28,38 @@
               <%= answer.body %>
             </div>
           </div>
+          <!-- comrentarios de respuesta -->
+          <div class="row justify-content-center">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <% answer.comments.each do |comment| %>
+                    <%= comment.text %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- crear comentarios de preguntas -->
+
+            <div class="row justify-content-center">
+              <div class="col-sm-6">
+                <% if signed_in? %>
+                  <br><h5>Publicar Comentario</h5>
+                  <%= form_for @comment, url: "/answers/#{answer.id}/commentanswer" do |f| %>
+                    <div class="form-group">
+                      <%= f.text_area :text, placeholder: "Ingrese un comentario", class: "form-control"%>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.submit "Publicar", class: "btn btn-dark" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+
         <% end %>
       <% end %>
     </div>

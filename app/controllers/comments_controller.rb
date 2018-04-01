@@ -1,18 +1,26 @@
 class CommentsController < ApplicationController
-  before_action :set_commentable
+
   def create
-    @comment = @commentable.comments.new(comments_params)
+    @commentable = Question.find(params[:question_id])
+    @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
+
     redirect_to @commentable
   end
 
-  private
-    def comments_params
-      params.require(:comment).permit(:text)
-    end
+  def create_answer
+    @commentable = Answer.find(params[:answer_id])
+    @comment = @commentable.comments.new(comment_params)
+    @comment.user = current_user
+    @comment.save
 
-    def set_commentable
-      @commentable = Question.find(params[:question_id])
+    redirect_to @comment.commentable.question
+
+  end
+
+  private
+    def comment_params
+      params.require(:comment).permit(:text)
     end
 end

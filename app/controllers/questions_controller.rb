@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question =  current_user.questions.create(questions_params) 
+    @question =  current_user.questions.create(questions_params)
 
     if @question.save
       redirect_to root_path, notice: "La pregunta se creo correctamente"
@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @comment = Comment.new
   end
 
   private

@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :answers, only: [:create] do
+    post '/commentanswer', to: 'comments#create_answer'
+  end
+
   devise_for :users
 end
