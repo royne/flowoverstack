@@ -2,6 +2,15 @@
   <div class="row justify-content-around">
     <div class="col-sm-6">
       <h1>nuevo producto</h1>
+      <% if @question.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+           <% @question.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_for @question do |f| %>
         <div class="form-group">
           <%= f.text_field :title, placeholder: "Ingrese el titulo de la pregunta", class: "form-control" %>

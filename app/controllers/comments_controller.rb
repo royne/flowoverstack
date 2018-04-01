@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
     @comment.save
 
     redirect_to @commentable
+
+    unless @comment.save
+      flash[:alert] = "El comentario no puede estar vacio"
+    end
   end
 
   def create_answer
@@ -17,6 +21,9 @@ class CommentsController < ApplicationController
 
     redirect_to @comment.commentable.question
 
+    unless @comment.save
+      flash[:alert] = "El comentario no puede estar vacio"
+    end
   end
 
   private

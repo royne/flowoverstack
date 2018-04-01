@@ -3,6 +3,10 @@ class AnswersController < ApplicationController
     question = Question.find(params[:question_id])
     question.answers.create(answers_params)
     redirect_to question
+
+    unless question.save
+      flash[:alert] = "la respuesta no puede estar vacia"
+    end
   end
 
   private
