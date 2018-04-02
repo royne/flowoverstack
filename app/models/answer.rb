@@ -5,7 +5,6 @@ class Answer < ApplicationRecord
   has_many :vote_answers
 
   validates :body, presence:true
-  validates :body, length: { minimum: 15}
 
   def voted_answer_by?(user)
     vote_answers.exists?(user: user)

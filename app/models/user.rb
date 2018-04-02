@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :answers
   has_many :vote_questions
   has_many :vote_answers
+  has_many :comments
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

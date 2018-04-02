@@ -10,7 +10,7 @@ body{
   color: #525243;
   line-height: 1;
 }
-.body-margin{ margin-top: 30px; margin-bottom: 50px; }
+.body-margin{ margin-top: 30px; margin-bottom: 90px; }
 .body-top{ margin-top: 30px; }
 
 h1, h2, h3{
@@ -23,3 +23,13 @@ h1, h2, h3{
   font-size: 1.5rem;
 }
 .right{ padding-right: 15px; }
+
+.social a{
+  font-size: 30px ;
+  color: #fff;
+  text-shadow: 1px 1px 1px #007bff;
+}
+.rc{
+  text-shadow: 1px 1px 1px #007bff;
+}
+.fija-nav{ bottom: 0px !important; }

@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -30,5 +31,19 @@
     <% end %>
 
     <%= yield %>
+
+    <footer class="fija-nav">
+      <nav class="navbar  navbar-dark bg-dark fixed-bottom">
+        <div class="container">
+          <div class="rc">
+            <a class="navbar-brand" href=""><i><b>©Royne Chaves</b></i></a>
+          </div>
+          <div class="text-right social">
+            <a href="https://github.com/royne" target="_blank"><i class="fa fa-github"></i></a>
+          </div>
+        </div>
+      </nav>
+    </footer>
+
   </body>
 </html>
