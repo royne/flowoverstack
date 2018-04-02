@@ -1,2 +1,25 @@
 @import "bootstrap";
 @import "questions";
+@import "answers";
+
+*{
+  font-family: 'Oxygen', sans-serif;
+}
+body{
+  background: #F2F2F2;
+  color: #525243;
+  line-height: 1;
+}
+.body-margin{ margin-top: 30px; margin-bottom: 50px; }
+.body-top{ margin-top: 30px; }
+
+h1, h2, h3{
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+.card{
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+.vq-size{
+  font-size: 1.5rem;
+}
+.right{ padding-right: 15px; }

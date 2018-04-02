@@ -1,37 +1,39 @@
-<div class="container">
-  <div class="row justify-content-around">
-    <div class="col-sm-8">
-      <h1>Preguntas</h1>
-    </div>
-    <div class="col-sm-2">
-      <%= link_to "Nueva Pregunta", new_question_path, class: "btn btn-secondary" %>
+<section class="body-margin">
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-sm-8">
+        <h1>Explora, publica, responde, comenta...</h1>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to "Nueva Pregunta", new_question_path, class: "btn btn-secondary " %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-10">
-      <table class="table">
-        <tbody>
-          <% @questions.each do |question| %>
+  <div class="container body-top">
+    <div class="row justify-content-center">
+      <div class="col-sm-10">
+        <table class="table">
+          <tbody>
+            <% @questions.each do |question| %>
             <tr>
               <td class="text-center">
-                <p><%= question.vote_questions.size %></p>
+                <p class="vq-size"><%= question.vote_questions.size %></p>
                 <p class="text-secondary">Votos</p>
               </td>
               <td class="text-center">
-                <p class="text-center"><%= question.answers.size %></p>
+                <p class="vq-size"><%= question.answers.size %></p>
                 <p class="text-secondary ">Respuestas</p>
               </td>
               <td>
-                <h5><%= link_to question.title.capitalize, question %></h5>
-                <p class="font-italic text-secondary">Publicado por <%= question.user.email %>, <%= time_ago_in_words(question.created_at) %> </p>
+                <h4><%= link_to question.title.capitalize, question %></h4>
+                <p class="font-italic text-secondary">Pregunta realizada por <%= question.user.email %>, <%= time_ago_in_words(question.created_at) %> </p>
               </td>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+</section>
