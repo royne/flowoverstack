@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
     @questions = Question.all.order(created_at: :desc)
 
     if params[:title].present?
-      @questions = @questions.where("title LIKE ?", "%#{params[:title]}%")
+      @questions = @questions.where("title ILIKE ?", "%#{params[:title]}%")
     end
   end
 
