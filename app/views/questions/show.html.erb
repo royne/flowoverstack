@@ -15,10 +15,10 @@
     <div class="col-sm-8">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title"><strong><%= @question.title.capitalize %></strong></h5>
+          <h5 class="card-title"><strong><%= markdown(@question.title.capitalize) %></strong></h5>
         </div>
         <div class="card-body">
-          <%= @question.body %>
+          <%= markdown(@question.body) %>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
           <!-- respuesta -->
           <div class="card">
             <div class="card-body">
-              <%= answer.body %>
+              <%= markdown(answer.body) %>
             </div>
             <p class="font-italic text-secondary text-right right">Realizada por <%= answer.user.email %>, <%= time_ago_in_words(answer.created_at) %> </p>
             <br>
@@ -63,7 +63,7 @@
                 <% answer.comments.each do |comment| %>
                   <div class="card">
                     <div class="card-body">
-                      <%= comment.text %>
+                      <%= markdown(comment.text) %>
                     </div>
                   </div>
                   <br>

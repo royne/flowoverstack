@@ -26,7 +26,7 @@
                 <p class="text-secondary ">Respuestas</p>
               </td>
               <td>
-                <h4><%= link_to question.title.capitalize, question %></h4>
+                <h4><%= link_to markdown(question.title.capitalize), question %></h4>
                 <p class="font-italic text-secondary">Pregunta realizada por <%= question.user.email %>, <%= time_ago_in_words(question.created_at) %> </p>
               </td>
             </tr>
